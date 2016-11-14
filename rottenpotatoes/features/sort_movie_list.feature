@@ -20,11 +20,19 @@ Background: movies have been added to database
   | Chicken Run             | G      | 21-Jun-2000  |
 
   And I am on the RottenPotatoes home page
+  
+
 
 Scenario: sort movies alphabetically
   When I follow "Movie Title"
-  # your steps here
+  When I check the following ratings: "PG, G, PG-13, R"
+  And I press "ratings_submit"
+  Then I should see "Aladdin" before "Chocolate"
+  Then I should see "Chicken Run" before "Raiders of the Lost Ark"
 
 Scenario: sort movies in increasing order of release date
   When I follow "Release Date"
+  When I check the following ratings: "PG, G, PG-13, R"
+  And I press "ratings_submit"
+  Then I should see "Aladdin" before "The Help"
   # your steps here
